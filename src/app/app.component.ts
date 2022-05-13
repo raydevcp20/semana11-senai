@@ -28,7 +28,9 @@ export class AppComponent implements  OnInit{
 
   ngOnInit(): void {
   }
-
+  sendUser(){
+    console.log("Usuario:", this.user)
+  }
   showInformations(){
     console.log('Email:', this.user.email );
     console.log('Password:', this.user.password );
