@@ -1,0 +1,80 @@
+<h1>Aula 02 - diretivas (*ngFor e *ngIf)</h1> 
+
+<!-- *ngIf -->
+<!-- Verifique que ao clicar no botão o valor contrário é atribuido a ele e com a
+ajuda do *ngIf o container pode ou não se tornar visível.  -->
+<!-- Declaração: *ngIf="condição" -->
+
+<button (click)="trocaValor = !trocaValor">Trocar valor</button>
+
+<div class="alert alert-secondary" role="alert" *ngIf="trocaValor">
+  Este container será apresentado se o trocaValor for true!
+</div>
+
+<!-- *ngFor -->
+<!-- o *ngFor serve para repetir uma blocagem HTML ate que todos os itens do array sejam inteirados -->
+<!-- Declaração: *ngFor="let variavelLocal of array" -->
+
+<!-- Exericio slide -->
+<h2>Lista de tarefas</h2>
+<ul>
+  <li *ngFor="let item of list">
+    {{ item }}
+  </li>
+</ul>
+<!-- ============================== -->
+
+<h2>Outros testes</h2>
+<h3>Tabela de alunos - listagem usando objetos</h3>
+<table>
+  <thead>
+    <th>Id</th>
+    <th>Nome</th>
+    <th>Nota</th>
+  </thead>
+  <tbody>
+    <!-- i irá se remeter ao index -->
+    <tr *ngFor="let aluno of alunosWithObject; let i = index">
+      <th>{{ i }}</th>
+      <th>{{ aluno.nome }}</th>
+      <th>{{ aluno.nota }}</th>
+      <th>X</th>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Outros testes -->
+<input type="text" [(ngModel)]="password" />
+<div>
+  <h3>Digite uma senha:</h3>
+  <input type="password" [(ngModel)]="password" />
+  <p *ngIf="password.length > 5; else templateElse">
+    Senha possui mais que 5 caracteres, está tudo certo :)
+  </p>
+
+  <!-- a variavel de template ira ser usada quando usar a palavra reservada else no *ngIf -->
+  <ng-template #templateElse>
+    <p>Senha deve conter mais que 5 caracteres</p>
+  </ng-template>
+</div>
+
+<h2>Outros testes</h2>
+<!-- Exercicio do slide -->
+<div>
+  <h3>Digite uma senha:</h3>
+  <input type="text" [(ngModel)]="cpf" />
+
+  <p *ngIf="cpf == '11111111111'">CPF inválido!</p>
+  <p *ngIf="cpf.length < 11">O CPF está com o tamanho inválido</p>
+  <p *ngIf="cpf.length == 11">CPF válido, está tudo certo :)</p>
+</div>
+
+<button (click)="animal = 'Gato'">Aparecer Gato</button>
+<button (click)="animal = 'Cachorro'">Aparecer Cachorro</button>
+<button (click)="animal = 'Chinchila'">Aparecer Chinchila</button>
+
+<br />
+
+<img *ngIf="animal == 'Cachorro'" src="../assets/cachorro.png" alt="" />
+<img *ngIf="animal == 'Gato'" src="../assets/gato.png" alt="" />
+<img *ngIf="animal == 'Chinchila'" src="../assets/chinchila.jpg" alt="" />
