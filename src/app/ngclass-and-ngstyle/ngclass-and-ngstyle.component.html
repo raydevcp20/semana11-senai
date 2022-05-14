@@ -1,0 +1,49 @@
+<h1>Aula 01 - diretivas (ngStyle e ngClass)</h1>
+
+
+<h2>ngClass</h2>
+<div [ngClass]="{ 'corDeFundo card' : isRoxo, 'card': !isRoxo}">
+  <h4>
+    É possível alterar as classes de um container html atravez do ngClass.
+    sua declaração consiste em [ngClass]="{ 'classes' : valorSendoTruOuFalse }" .
+    Caso queira várias declarações só adicionar o , no final. <br />
+    Agora fique a vontade para testar! Mude o valor para true no component.ts deste componente e 
+  </h4> 
+</div>
+
+<h2>Outros testes</h2>
+<button
+  class="card card-small"
+  [ngClass]="{ 'class' = clicou }"
+  (click)="clicou = !clicou"
+>
+  <span> + New Component</span>
+</button> 
+
+<!-- ================================================= -->
+
+<h2>ngStyle</h2>
+<label>
+  Nome: <br />
+  <input
+    [ngStyle]="{ 
+      'fontSize' : tamanhoFonte + 'px', 
+      'backgroundColor' : cor == 'red' ? 'red' : ''}"
+    type="text"
+    class="noBorder"
+    [(ngModel)]="cor"
+  />
+  <p> 
+    Ao digitar red observe que a cor de fundo ficará red, caso digite qualquer outro valor o fundo ficará sem cor.<br />
+    Declaração: [ngStyle]="{ 'atributoCSS' : valor ou condição }"
+  </p>
+</label>
+
+<h2>Outros testes</h2>
+<button
+  [ngStyle]="{ 'backgroundColor': cor2 == 'orange' ? 'orange' : 'gray ',
+    'border': cor2 == 'gray' ? '2px solid gray' : '2px solid orange'
+  }"
+>
+  Salvar
+</button>

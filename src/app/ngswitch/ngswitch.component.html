@@ -1,0 +1,70 @@
+<h1>Aula 04 - diretivas ([ngSwitch], *ngSwitchCase e *ngSwitchDefault)</h1>
+
+<p>
+  ngSwitch serve como um roteador de informações onde assim que ele recebe uma
+ informação ele irá conferir nos *ngSwitchCase se o valor da variável possui o mesmo valor.
+ Caso possua o container que possui a declaração e somennte ele será processado pelo angular
+</p>
+
+Declaração: 
+<!-- <code>
+  <div [ngSwitch]="variavelComValor">
+    <div *ngSwitchCase="'valor 1'" >
+      Informação 1
+    </div>
+    <div *ngSwitchCase="'valor 2'" >
+      Informação 2
+    </div>
+    <div *ngSwitchCase="'valor 3'" >
+      Informação 3
+    </div>
+  </div>
+</code> -->
+
+<h2>Outros testes</h2>
+<select class="form-control" [(ngModel)]="choseAlert">
+  <option value="primary"> Primary </option>
+  <option value="secondary"> Secondary </option>
+  <option value="success"> Success </option>
+  <option value="danger"> Danger </option>
+</select>
+
+
+<div [ngSwitch]="choseAlert">
+  <div *ngSwitchCase="'primary'" class="alert alert-primary" role="alert">
+    <div *ngSwitchDefault class="alert alert-success" role="alert">
+      This is a success alert—check it out!
+    </div>
+    This is a primary alert—check it out!
+  </div>
+  <div *ngSwitchCase="'secondary'" class="alert alert-secondary" role="alert">
+    This is a secondary alert—check it out!
+  </div>
+  <div *ngSwitchCase="'danger'" class="alert alert-danger" role="alert">
+    This is a danger alert—check it out!
+  </div>
+</div>
+
+
+<!-- Exercicio slide -->
+<select class="form-control" [(ngModel)]="choseMovie">
+  <option selected disabled>Selecione um gênero</option>
+  <option *ngFor="let genero of arrayGeneros" value="{{ genero }}">
+    {{ genero }}
+  </option>
+</select>
+
+<div [ngSwitch]="choseMovie">
+  <div *ngSwitchCase="'Comédia'" class="alert alert-success" role="alert">
+    <h4>Mr. Bean</h4>
+  </div>
+  <div *ngSwitchCase="'Terror'" class="alert alert-success" role="alert">
+    <h4>IT: a coisa</h4>
+  </div>
+  <div *ngSwitchCase="'Ação'" class="alert alert-success" role="alert">
+    <h4>007</h4>
+  </div>
+  <div *ngSwitchCase="'Drama'" class="alert alert-success" role="alert">
+    <h4>Cisne Negro</h4>
+  </div>
+</div>
