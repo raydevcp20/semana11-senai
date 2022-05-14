@@ -1,6 +1,6 @@
 <!-- exercicio 01 -->
 
-<div class="container">
+<!-- <div class="container">
   <form #login="ngForm" (ngSubmit)="sendUser()">
     <div class="form-group">
       <label>Email address</label>
@@ -41,15 +41,36 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-</div>
+</div> -->
 
 <!-- exercicio 02 -->
+<h2>Exercicio de lista</h2>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index;">
+        <th>{{ i }}</th>
+        <td>{{ user.primeiroNome }}</td>
+        <td>{{ user.ultimo }}</td>
+        <td (click)="getUser(i)"> X </td>
+        <td (click)="editUser(user, i)"> Editar </td>
+      </tr>
+    </tbody>
+  </table>
 
 
-
-
-
-
+  <div *ngIf="editandoUser">
+      <input type="text" placeholder="Primeiro nome..." [(ngModel)]="primeiroNome">
+      
+      <input type="text" placeholder="Segundo nome..." [(ngModel)]="segundoNome">
+      <button (click)="editingUser()">Salvar</button>
+  </div>
 
 
 
